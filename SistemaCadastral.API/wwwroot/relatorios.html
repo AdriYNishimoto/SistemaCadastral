@@ -29,71 +29,80 @@
             const thead = document.getElementById('theadRelatorio');
             const tbody = document.getElementById('resultados');
             mensagem.textContent = '';
+            mensagem.classList.remove('error', 'success');
             thead.innerHTML = '';
             tbody.innerHTML = '';
 
+            console.log(`Gerando relatório: ${tipo}`); // Log para depuração
+
             try {
-                const response = await fetch(`/api/Pessoa/relatorio/${tipo}`, {
+                const response = await fetch(`http://localhost:5288/api/Pessoa/relatorio/${tipo}`, {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' }
                 });
 
+                console.log('Resposta:', response.status, response.statusText); // Log para depuração
+
                 if (response.ok) {
-                    const dados = await response.json();
+                    const relatorio = await response.json(); // Usando 'relatorio' em vez de 'dados'
+                    if (relatorio.length === 0) {
+                        mensagem.textContent = 'Nenhum registro encontrado.';
+                        mensagem.classList.add('success');
+                        return;
+                    }
+
                     if (tipo === 'basico') {
                         thead.innerHTML = `
-                            <tr>
-                                <th>CPF/CNPJ</th>
-                                <th>Celular</th>
-                            </tr>
-                        `;
-                        dados.forEach(item => {
+                                <tr>
+                                    <th>CPF/CNPJ</th>
+                                    <th>Celular</th>
+                                </tr>
+                            `;
+                        relatorio.forEach(item => {
                             const tr = document.createElement('tr');
                             tr.innerHTML = `
-                                <td>${formatCpfCnpj(item.cpfCnpj)}</td>
-                                <td>${formatCelular(item.celular)}</td>
-                            `;
+                                    <td>${formatCpfCnpj(item.cpfCnpj)}</td>
+                                    <td>${formatCelular(item.celular)}</td>
+                                `;
                             tbody.appendChild(tr);
                         });
                     } else {
                         thead.innerHTML = `
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>CPF/CNPJ</th>
-                                <th>Tipo</th>
-                                <th>Cidade</th>
-                                <th>Estado</th>
-                                <th>Data Cadastro</th>
-                                <th>Idade</th>
-                            </tr>
-                        `;
-                        dados.forEach(pessoa => {
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>CPF/CNPJ</th>
+                                    <th>Tipo</th>
+                                    <th>Cidade</th>
+                                    <th>Estado</th>
+                                    <th>Data Cadastro</th>
+                                    <th>Idade</th>
+                                </tr>
+                            `;
+                        relatorio.forEach(pessoa => {
                             const tr = document.createElement('tr');
                             tr.innerHTML = `
-                                <td>${pessoa.id}</td>
-                                <td>${pessoa.nome}</td>
-                                <td>${formatCpfCnpj(pessoa.cpfCnpj)}</td>
-                                <td>${pessoa.tipoPessoa === 'FI' ? 'Física' : 'Jurídica'}</td>
-                                <td>${pessoa.cidade?.nome || ''}</td>
-                                <td>${pessoa.cidade?.estado || ''}</td>
-                                <td>${new Date(pessoa.dataCadastro).toLocaleDateString('pt-BR')}</td>
-                                <td>${calcularIdade(pessoa.dataNascimentoFundacao)}</td>
-                            `;
+                                    <td>${pessoa.id}</td>
+                                    <td>${pessoa.nome}</td>
+                                    <td>${formatCpfCnpj(pessoa.cpfCnpj)}</td>
+                                    <td>${pessoa.tipoPessoa === 'FI' ? 'Física' : 'Jurídica'}</td>
+                                    <td>${pessoa.cidade || ''}</td>
+                                    <td>${pessoa.estado || ''}</td>
+                                    <td>${new Date(pessoa.dataCadastro).toLocaleDateString('pt-BR')}</td>
+                                    <td>${pessoa.idade}</td>
+                                `;
                             tbody.appendChild(tr);
                         });
                     }
-                    if (dados.length === 0) {
-                        mensagem.textContent = 'Nenhum registro encontrado.';
-                    }
                 } else {
-                    mensagem.textContent = await response.text();
+                    const erro = await response.text();
+                    mensagem.textContent = erro || 'Erro ao gerar relatório.';
                     mensagem.classList.add('error');
                 }
             } catch (err) {
                 mensagem.textContent = 'Erro ao conectar com o servidor.';
                 mensagem.classList.add('error');
-                console.error(err);
+                console.error('Erro:', err);
             }
         }
     </script>

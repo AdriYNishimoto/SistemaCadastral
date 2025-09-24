@@ -161,3 +161,10 @@ C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaC
 C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\SistemaCadastral.API.pdb
 C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\SistemaCadastral.API.genruntimeconfig.cache
 C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\ref\SistemaCadastral.API.dll
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\bin\Debug\net9.0\SistemaCadastral.API.staticwebassets.runtime.json
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\compressed\e9ibr85ypy-v44ys2bp4t.gz
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\compressed\g8hw5fa4i1-6702go4sk5.gz
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\compressed\msqiwffq5n-utz32v0z69.gz
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\compressed\lrdz7l5dl0-v94ja6yyo1.gz
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\compressed\007cvnt83k-cr8gllr9y2.gz
+C:\Users\Adm\OneDrive\Documentos\Yudi\DEV\C#\Sae+C\ProjSistemaCadastral\SistemaCadastral\SistemaCadastral.API\obj\Debug\net9.0\compressed\8t86kn5m2x-i93fv0k9me.gz

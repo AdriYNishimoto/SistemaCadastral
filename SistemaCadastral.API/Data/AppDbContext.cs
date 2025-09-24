@@ -17,5 +17,7 @@ public class AppDbContext : DbContext
             .IsUnique();
 
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Cidade>().HasData(new Cidade { ID = 1, Nome = "São Paulo", Estado = "SP" });
     }
 }

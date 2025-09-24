@@ -130,12 +130,14 @@
                 }
             };
 
+            console.log('Enviando dados:', JSON.stringify(dados));
             try {
-                const response = await fetch('/api/Pessoa/registrar', {
+                const response = await fetch('http://localhost:5288/api/Pessoa/registrar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(dados)
                 });
+                console.log('Resposta:', response.status, response.statusText);
 
                 if (response.ok) {
                     mensagem.textContent = 'Cadastro realizado com sucesso!';
@@ -149,7 +151,7 @@
             } catch (err) {
                 mensagem.textContent = 'Erro ao conectar com o servidor.';
                 mensagem.classList.add('error');
-                console.error(err);
+                console.error('Erro:', err);
             }
         });
     </script>

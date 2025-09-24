@@ -51,6 +51,7 @@
             e.preventDefault();
             const mensagem = document.getElementById('mensagem');
             mensagem.textContent = '';
+            mensagem.classList.remove('error', 'success');
 
             const tipoPessoa = document.getElementById('tipoPessoa').value;
             const cidadeNome = document.getElementById('cidadeNome').value;
@@ -59,43 +60,50 @@
             const query = new URLSearchParams();
             if (tipoPessoa) query.append('tipoPessoa', tipoPessoa);
             if (cidadeNome) query.append('cidade', cidadeNome);
- if (estado) query.append('estado', estado);
+            if (estado) query.append('estado', estado);
+
+            console.log('Consulta enviada:', query.toString()); 
 
             try {
-                const response = await fetch(`/api/Pessoa/consultar?${query.toString()}`, {
+                const response = await fetch(`http://localhost:5288/api/Pessoa/consultar?${query.toString()}`, {
                     method: 'GET',
                     headers: { 'Content-Type': 'application/json' }
                 });
+
+                console.log('Resposta:', response.status, response.statusText);
 
                 if (response.ok) {
                     const pessoas = await response.json();
                     const tbody = document.getElementById('resultados');
                     tbody.innerHTML = '';
-                    pessoas.forEach(pessoa => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${pessoa.id}</td>
-                            <td>${pessoa.nome}</td>
-                            <td>${formatCpfCnpj(pessoa.cpfCnpj)}</td>
-                            <td>${pessoa.tipoPessoa === 'FI' ? 'Física' : 'Jurídica'}</td>
-                            <td>${pessoa.cidade}</td>
-                            <td>${pessoa.estado}</td>
-                            <td>${new Date(pessoa.dataCadastro).toLocaleDateString('pt-BR')}</td>
-                            <td>${pessoa.idade}</td>
-                        `;
-                        tbody.appendChild(tr);
-                    });
                     if (pessoas.length === 0) {
                         mensagem.textContent = 'Nenhum registro encontrado.';
+                        mensagem.classList.add('success');
+                    } else {
+                        pessoas.forEach(pessoa => {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                    <td>${pessoa.id}</td>
+                                    <td>${pessoa.nome}</td>
+                                    <td>${formatCpfCnpj(pessoa.cpfCnpj)}</td>
+                                    <td>${pessoa.tipoPessoa === 'FI' ? 'Física' : 'Jurídica'}</td>
+                                    <td>${pessoa.cidade || ''}</td>
+                                    <td>${pessoa.estado || ''}</td>
+                                    <td>${new Date(pessoa.dataCadastro).toLocaleDateString('pt-BR')}</td>
+                                    <td>${pessoa.idade}</td>
+                                `;
+                            tbody.appendChild(tr);
+                        });
                     }
                 } else {
-                    mensagem.textContent = await response.text();
+                    const erro = await response.text();
+                    mensagem.textContent = erro || 'Erro ao consultar dados.';
                     mensagem.classList.add('error');
                 }
             } catch (err) {
                 mensagem.textContent = 'Erro ao conectar com o servidor.';
                 mensagem.classList.add('error');
-                console.error(err);
+                console.error('Erro:', err);
             }
         });
     </script>

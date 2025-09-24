@@ -20,12 +20,39 @@ public class PessoaController : ControllerBase
     {
         try
         {
+            Console.WriteLine("Endpoint /api/Pessoa/registrar chamado.");
             var registrada = await _pessoaService.RegistrarAsync(pessoa);
             return Ok(registrada);
         }
         catch (ArgumentException ex)
         {
+            Console.WriteLine($"Erro de validação: {ex.Message}");
             return BadRequest(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro interno: {ex.Message}");
+            return StatusCode(500, "Erro interno: " + ex.Message);
+        }
+    }
+
+    [HttpGet("consultar")]
+    public async Task<ActionResult<IEnumerable<object>>> Consultar(string? tipoPessoa = "Todos", string? cidade = null, string? estado = null)
+    {
+        try
+        {
+            var pessoas = await _pessoaService.ConsultarAsync(tipoPessoa, cidade, estado);
+            return Ok(pessoas.Select(p => new
+            {
+                p.ID,
+                p.Nome,
+                p.CpfCnpj,
+                p.TipoPessoa,
+                Cidade = p.Cidade?.Nome,
+                Estado = p.Cidade?.Estado,
+                p.DataCadastro,
+                Idade = CalcularIdade(p.DataNascimentoFundacao)
+            }));
         }
         catch (Exception ex)
         {
@@ -33,33 +60,37 @@ public class PessoaController : ControllerBase
         }
     }
 
-    [HttpGet("consultar")]
-    public async Task<ActionResult<IEnumerable<Pessoa>>> Consultar(string? tipoPessoa = "Todos", string? cidade = null, string? estado = null)
-    {
-        var pessoas = await _pessoaService.ConsultarAsync(tipoPessoa, cidade, estado);
-        return Ok(pessoas.Select(p => new
-        {
-            p.ID,
-            p.Nome,
-            p.CpfCnpj,
-            p.TipoPessoa,
-            Cidade = p.Cidade.Nome,
-            Estado = p.Cidade.Estado,
-            p.DataCadastro,
-            Idade = CalcularIdade(p.DataNascimentoFundacao) 
-        }));
-    }
-
     [HttpGet("relatorio/basico")]
     public async Task<ActionResult<IEnumerable<object>>> RelatorioBasico()
     {
-        return Ok(await _pessoaService.GerarRelatorioBasicoAsync());
+        try
+        {
+            return Ok(await _pessoaService.GerarRelatorioBasicoAsync());
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "Erro interno: " + ex.Message);
+        }
     }
 
     [HttpGet("relatorio/completo")]
     public async Task<ActionResult<IEnumerable<Pessoa>>> RelatorioCompleto()
     {
-        return Ok(await _pessoaService.GerarRelatorioCompletoAsync());
+        try
+        {
+            return Ok(await _pessoaService.GerarRelatorioCompletoAsync());
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "Erro interno: " + ex.Message);
+        }
+    }
+
+    [HttpGet("teste")]
+    public IActionResult Teste()
+    {
+        Console.WriteLine("Endpoint /api/Pessoa/teste chamado.");
+        return Ok("API está funcionando!");
     }
 
     private int CalcularIdade(DateTime dataNasc)

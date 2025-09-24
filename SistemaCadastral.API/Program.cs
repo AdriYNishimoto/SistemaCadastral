@@ -7,17 +7,18 @@ using SistemaCadastral.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
+// Adicionar DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
-builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
+// Adicionar serviços e repositórios
 builder.Services.AddScoped<IPessoaService, PessoaService>();
 builder.Services.AddScoped<ICidadeService, CidadeService>();
+builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
+builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
+
+// Adicionar controllers
+builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {
@@ -27,16 +28,13 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.WebHost.UseUrls("http://localhost:5288");
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
+app.UseCors();
 app.UseStaticFiles();
-
-app.UseHttpsRedirection();
+app.UseRouting();
+app.MapControllers();
 
 app.Run();
