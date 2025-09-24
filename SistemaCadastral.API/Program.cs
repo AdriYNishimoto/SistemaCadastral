@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using SistemaCadastral.API.Data;
 using SistemaCadastral.API.Repositories;
 using SistemaCadastral.API.Repositories.Interfaces;
+using SistemaCadastral.API.Services;
+using SistemaCadastral.API.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
 builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
+builder.Services.AddScoped<IPessoaService, PessoaService>();
+builder.Services.AddScoped<ICidadeService, CidadeService>();
 
 var app = builder.Build();
 
