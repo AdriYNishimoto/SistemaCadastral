@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Cadastral - Consulta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Consulta de Pessoas</h1>
+        <a href="index.html">Voltar ao Menu</a>
+    </header>
+    <main>
+        <form id="formConsulta">
+            <label for="tipoPessoa">Tipo de Pessoa:</label>
+            <select id="tipoPessoa">
+                <option value="Todos">Todos</option>
+                <option value="FI">Física</option>
+                <option value="JU">Jurídica</option>
+            </select>
+
+            <label for="cidadeNome">Cidade:</label>
+            <input type="text" id="cidadeNome">
+
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado">
+
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="mensagem"></div>
+        <table id="tabelaConsulta">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CPF/CNPJ</th>
+                    <th>Tipo</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Data Cadastro</th>
+                    <th>Idade</th>
+                </tr>
+            </thead>
+            <tbody id="resultados"></tbody>
+        </table>
+    </main>
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('formConsulta').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const mensagem = document.getElementById('mensagem');
+            mensagem.textContent = '';
+
+            const tipoPessoa = document.getElementById('tipoPessoa').value;
+            const cidadeNome = document.getElementById('cidadeNome').value;
+            const estado = document.getElementById('estado').value;
+
+            const query = new URLSearchParams();
+            if (tipoPessoa) query.append('tipoPessoa', tipoPessoa);
+            if (cidadeNome) query.append('cidade', cidadeNome);
+ if (estado) query.append('estado', estado);
+
+            try {
+                const response = await fetch(`/api/Pessoa/consultar?${query.toString()}`, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (response.ok) {
+                    const pessoas = await response.json();
+                    const tbody = document.getElementById('resultados');
+                    tbody.innerHTML = '';
+                    pessoas.forEach(pessoa => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${pessoa.id}</td>
+                            <td>${pessoa.nome}</td>
+                            <td>${formatCpfCnpj(pessoa.cpfCnpj)}</td>
+                            <td>${pessoa.tipoPessoa === 'FI' ? 'Física' : 'Jurídica'}</td>
+                            <td>${pessoa.cidade}</td>
+                            <td>${pessoa.estado}</td>
+                            <td>${new Date(pessoa.dataCadastro).toLocaleDateString('pt-BR')}</td>
+                            <td>${pessoa.idade}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                    if (pessoas.length === 0) {
+                        mensagem.textContent = 'Nenhum registro encontrado.';
+                    }
+                } else {
+                    mensagem.textContent = await response.text();
+                    mensagem.classList.add('error');
+                }
+            } catch (err) {
+                mensagem.textContent = 'Erro ao conectar com o servidor.';
+                mensagem.classList.add('error');
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>

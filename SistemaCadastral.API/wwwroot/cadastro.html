@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Cadastral - Cadastro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Pessoa</h1>
+        <a href="index.html">Voltar ao Menu</a>
+    </header>
+    <main>
+        <form id="formCadastro">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" maxlength="70" required>
+
+            <label for="tipoPessoa">Tipo de Pessoa:</label>
+            <select id="tipoPessoa" required>
+                <option value="FI">Física</option>
+                <option value="JU">Jurídica</option>
+            </select>
+
+            <label for="cpfCnpj">CPF/CNPJ:</label>
+            <input type="text" id="cpfCnpj" maxlength="18" required>
+
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" maxlength="9" required>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" maxlength="100" required>
+
+            <label for="numero">Número:</label>
+            <input type="number" id="numero" required>
+
+            <label for="compl">Complemento:</label>
+            <input type="text" id="compl" maxlength="20">
+
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" maxlength="50" required>
+
+            <label for="dataNascimentoFundacao">Data de Nascimento/Fundação:</label>
+            <input type="date" id="dataNascimentoFundacao" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" maxlength="50" required>
+
+            <label for="celular">Celular:</label>
+            <input type="text" id="celular" maxlength="15" required>
+
+            <label for="sitCadastral">Situação Cadastral:</label>
+            <select id="sitCadastral" required>
+                <option value="A">Ativo</option>
+                <option value="I">Inativo</option>
+            </select>
+
+            <label for="cidadeNome">Cidade:</label>
+            <input type="text" id="cidadeNome" maxlength="25" required>
+
+            <label for="estado">Estado:</label>
+            <input type="text" id="estado" maxlength="20" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+        <div id="mensagem"></div>
+    </main>
+    <script src="scripts.js"></script>
+    <script>
+        // Máscaras para CPF/CNPJ e CEP
+        document.getElementById('cpfCnpj').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            const tipoPessoa = document.getElementById('tipoPessoa').value;
+            if (tipoPessoa === 'FI') {
+                if (value.length <= 11) {
+                    e.target.value = value
+                        .replace(/(\d{3})(\d)/, '$1.$2')
+                        .replace(/(\d{3})(\d)/, '$1.$2')
+                        .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+                }
+            } else {
+                if (value.length <= 14) {
+                    e.target.value = value
+                        .replace(/(\d{2})(\d)/, '$1.$2')
+                        .replace(/(\d{3})(\d)/, '$1.$2')
+                        .replace(/(\d{3})(\d)/, '$1/$2')
+                        .replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+                }
+            }
+        });
+
+        document.getElementById('cep').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 8) {
+                e.target.value = value.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+        });
+
+        document.getElementById('celular').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                e.target.value = value
+                    .replace(/(\d{2})(\d)/, '($1) $2')
+                    .replace(/(\d{5})(\d)/, '$1-$2');
+            }
+        });
+
+        document.getElementById('formCadastro').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const mensagem = document.getElementById('mensagem');
+            mensagem.textContent = '';
+
+            const dados = {
+                Nome: document.getElementById('nome').value,
+                TipoPessoa: document.getElementById('tipoPessoa').value,
+                CpfCnpj: document.getElementById('cpfCnpj').value.replace(/\D/g, ''),
+                Cep: document.getElementById('cep').value.replace(/\D/g, ''),
+                Endereco: document.getElementById('endereco').value,
+                Numero: parseInt(document.getElementById('numero').value),
+                Compl: document.getElementById('compl').value,
+                Bairro: document.getElementById('bairro').value,
+                DataNascimentoFundacao: document.getElementById('dataNascimentoFundacao').value,
+                DataCadastro: new Date().toISOString(),
+                Email: document.getElementById('email').value,
+                Celular: document.getElementById('celular').value.replace(/\D/g, ''),
+                SitCadastral: document.getElementById('sitCadastral').value,
+                Cidade: {
+                    Nome: document.getElementById('cidadeNome').value,
+                    Estado: document.getElementById('estado').value
+                }
+            };
+
+            try {
+                const response = await fetch('/api/Pessoa/registrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                if (response.ok) {
+                    mensagem.textContent = 'Cadastro realizado com sucesso!';
+                    mensagem.classList.add('success');
+                    document.getElementById('formCadastro').reset();
+                } else {
+                    const erro = await response.text();
+                    mensagem.textContent = erro;
+                    mensagem.classList.add('error');
+                }
+            } catch (err) {
+                mensagem.textContent = 'Erro ao conectar com o servidor.';
+                mensagem.classList.add('error');
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+</html>
