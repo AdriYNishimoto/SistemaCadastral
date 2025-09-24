@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "2tdH5jnMj2k=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae+C\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\SistemaCadastral.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
+    "C:\\Users\\Adm\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
