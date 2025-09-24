@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SistemaCadastral.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe2001e464bbbc85c7a03c24d8f2c9aaf25eb334")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a0277f2e30cdf53c1fd83ae3abf89b2c6175d8e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SistemaCadastral.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SistemaCadastral.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
