@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|c:\\users\\adm\\onedrive\\documentos\\yudi\\dev\\c#\\sae\u002Bc\\projsistemacadastral\\sistemacadastral\\sistemacadastral.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|solutionrelative:sistemacadastral.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|c:\\users\\adm\\onedrive\\documentos\\yudi\\dev\\c#\\sae\u002Bc\\projsistemacadastral\\sistemacadastral\\sistemacadastral.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|solutionrelative:sistemacadastral.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|c:\\users\\adm\\onedrive\\documentos\\yudi\\dev\\c#\\sae\u002Bc\\projsistemacadastral\\sistemacadastral\\sistemacadastral.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|solutionrelative:sistemacadastral.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|c:\\users\\adm\\onedrive\\documentos\\yudi\\dev\\c#\\sae\u002Bc\\projsistemacadastral\\sistemacadastral\\sistemacadastral.api\\models\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|solutionrelative:sistemacadastral.api\\models\\cidade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|c:\\users\\adm\\onedrive\\documentos\\yudi\\dev\\c#\\sae\u002Bc\\projsistemacadastral\\sistemacadastral\\sistemacadastral.api\\models\\pessoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C0DB665-D5A3-4635-8CDC-48083D5EE346}|SistemaCadastral.API\\SistemaCadastral.API.csproj|solutionrelative:sistemacadastral.api\\models\\pessoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Program.cs",
+              "RelativeDocumentMoniker": "SistemaCadastral.API\\Program.cs",
+              "ToolTip": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Program.cs",
+              "RelativeToolTip": "SistemaCadastral.API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T18:01:49.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\appsettings.json",
+              "RelativeDocumentMoniker": "SistemaCadastral.API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\appsettings.json",
+              "RelativeToolTip": "SistemaCadastral.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-24T18:01:32.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "SistemaCadastral.API\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "SistemaCadastral.API\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T18:01:04.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Cidade.cs",
+              "DocumentMoniker": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Models\\Cidade.cs",
+              "RelativeDocumentMoniker": "SistemaCadastral.API\\Models\\Cidade.cs",
+              "ToolTip": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Models\\Cidade.cs",
+              "RelativeToolTip": "SistemaCadastral.API\\Models\\Cidade.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T18:00:26.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Pessoa.cs",
+              "DocumentMoniker": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Models\\Pessoa.cs",
+              "RelativeDocumentMoniker": "SistemaCadastral.API\\Models\\Pessoa.cs",
+              "ToolTip": "C:\\Users\\Adm\\OneDrive\\Documentos\\Yudi\\DEV\\C#\\Sae\u002BC\\ProjSistemaCadastral\\SistemaCadastral\\SistemaCadastral.API\\Models\\Pessoa.cs",
+              "RelativeToolTip": "SistemaCadastral.API\\Models\\Pessoa.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAIwD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T17:59:54.511Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
